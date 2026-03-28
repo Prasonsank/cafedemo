@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COFFEE LATTE | Portfolio Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.15/index.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.15/index.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        coffee: {
+                            50: '#fdfbf7',
+                            100: '#f5e6d3',
+                            600: '#7a604d',
+                            800: '#3d2b1f',
+                            900: '#2c1e12',
+                        },
+                        accent: { gold: '#b8860b' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fdfbf7; color: #2c1e12; overflow-x: hidden; }
+        .hero-bg {
+            height: 100vh;
+            background-image: url('https://image.qwenlm.ai/public_source/e733555d-4694-4eff-815a-d990cb8e915c/10d9bd789-79fa-45f9-a675-62998f731155.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        .menu-item-border { border-bottom: 1px dashed rgba(44, 30, 18, 0.2); }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 768px) {
+            .hero-bg { background-attachment: scroll; }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+   <a href="https://wa.me/919849257600?text=Hi%20Prason!%20I%20saw%20your%20Cafe%20Website%20demo%20and%20I'm%20interested%20in%20building%20a%20premium%20website%20for%20my%20business.%20Can%20we%20discuss%20the%20details?" 
+   class="fixed bottom-8 right-8 z-[60] bg-white text-coffee-900 p-4 rounded-2xl shadow-2xl border border-coffee-100 flex items-center gap-3 group hover:bg-coffee-900 hover:text-white transition-all duration-300 scale-90 md:scale-100"
+   title="Get a site like this">
+        <div class="bg-accent-gold text-white p-2 rounded-xl group-hover:bg-white group-hover:text-accent-gold transition-colors">
+            <i class="ri-code-s-slash-line font-bold"></i>
+        </div>
+        <div class="pr-2 text-left">
+            <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">Build your site</p>
+            <p class="text-xs font-bold">Contact Developer</p>
+        </div>
+    </a>
+
+    <nav class="fixed w-full z-50 transition-all duration-300 py-6" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold z-50">COFFEE <span class="text-accent-gold">LATTE</span></a>
+            <div class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#home" class="hover:text-accent-gold transition-colors">Home</a>
+                <a href="#about" class="hover:text-accent-gold transition-colors">About</a>
+                <a href="#menu" class="hover:text-accent-gold transition-colors">Menu</a>
+                <a href="#gallery" class="hover:text-accent-gold transition-colors">Gallery</a>
+                <a href="#findus" class="bg-coffee-900 text-white px-5 py-2 rounded-full hover:bg-accent-gold transition-all">Find Us</a>
+            </div>
+            <button class="md:hidden z-50 p-2" id="menu-toggle"><i class="ri-menu-4-line text-2xl" id="menu-icon"></i></button>
+        </div>
+        <div class="fixed inset-0 bg-white/95 z-40 md:hidden mobile-menu flex flex-col items-center justify-center space-y-8" id="mobile-nav">
+            <a href="#home" class="mobile-link text-2xl font-serif">Home</a>
+            <a href="#about" class="mobile-link text-2xl font-serif">About</a>
+            <a href="#menu" class="mobile-link text-2xl font-serif">Menu</a>
+            <a href="#gallery" class="mobile-link text-2xl font-serif">Gallery</a>
+            <a href="#findus" class="bg-coffee-900 text-white px-8 py-3 rounded-full font-bold mobile-link">Visit Us</a>
+        </div>
+    </nav>
+
+    <section id="home" class="relative hero-bg flex items-center justify-center">
+        <div class="absolute inset-0 bg-black/5"></div>
+        <div class="relative z-10 w-full max-w-xl px-6">
+            <div class="glass-card p-10 rounded-[32px] text-center fade-in visible">
+                <span class="text-accent-gold font-bold tracking-[0.2em] uppercase text-[10px] mb-3 block">Est. 2026</span>
+                <h1 class="font-serif text-4xl md:text-5xl mb-4 leading-tight">The <span class="italic font-light">Morning</span> Glow</h1>
+                <p class="text-sm text-coffee-800/70 mb-8 leading-relaxed max-w-xs mx-auto">A minimalist glasshouse experience where light meets the perfect roast.</p>
+                <a href="#menu" class="inline-block px-8 py-3 bg-coffee-900 text-white rounded-full text-sm font-bold hover:scale-105 transition-transform">Explore Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 fade-in">
+                    <span class="text-accent-gold font-bold tracking-widest text-[10px] uppercase mb-4 block">Our Story</span>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6">Crafted with <br/><span class="italic text-coffee-600">Passion & Purpose</span></h2>
+                    <p class="text-coffee-800/70 leading-relaxed mb-8">Founded in the heart of the design district, COFFEE LATTE was born from a simple vision: to create a sanctuary where architecture and alchemy coexist.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-6 border border-coffee-100 rounded-2xl">
+                            <i class="ri-leaf-line text-3xl text-accent-gold mb-3 block"></i>
+                            <h4 class="font-bold text-sm mb-1">Sustainable</h4>
+                            <p class="text-xs text-coffee-600/70">100% compostable packaging and direct-trade beans.</p>
+                        </div>
+                        <div class="p-6 border border-coffee-100 rounded-2xl">
+                            <i class="ri-cup-line text-3xl text-accent-gold mb-3 block"></i>
+                            <h4 class="font-bold text-sm mb-1">Handcrafted</h4>
+                            <p class="text-xs text-coffee-600/70">Small-batch roasting for unparalleled flavor profiles.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative fade-in">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" class="rounded-[40px] shadow-2xl relative z-10" alt="About Us">
+                    <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-coffee-100 rounded-full -z-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="menu" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl md:text-5xl mb-4">Our Main Menu</h2>
+                <div class="h-0.5 w-12 bg-accent-gold mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-x-20 gap-y-16">
+                <div class="space-y-8 fade-in">
+                    <h3 class="font-serif text-2xl text-coffee-800 italic border-l-4 border-accent-gold pl-4">Brews & Espresso</h3>
+                    
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Caramel Macchiato</span>
+                            <span class="text-accent-gold font-bold">$5.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Espresso with steamed milk and vanilla syrup.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Spanish Latte</span>
+                            <span class="text-accent-gold font-bold">$5.75</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Double shot espresso with condensed milk.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Lavender Honey Latte</span>
+                            <span class="text-accent-gold font-bold">$6.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Infused with organic lavender and local honey.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Cortado</span>
+                            <span class="text-accent-gold font-bold">$4.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Equal parts espresso and warm silky milk.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Flat White</span>
+                            <span class="text-accent-gold font-bold">$4.95</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Micro-foam poured over a double ristretto.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Affogato Moderne</span>
+                            <span class="text-accent-gold font-bold">$7.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Vanilla bean gelato drowned in hot espresso.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8 fade-in">
+                    <h3 class="font-serif text-2xl text-coffee-800 italic border-l-4 border-accent-gold pl-4">Cold & Specialty</h3>
+                    
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Nitro Velvet Foam</span>
+                            <span class="text-accent-gold font-bold">$7.00</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Nitro cold brew with sweet cream foam.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Matcha Green Latte</span>
+                            <span class="text-accent-gold font-bold">$5.95</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Ceremonial grade matcha with oat milk.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Rose Gold Cold Brew</span>
+                            <span class="text-accent-gold font-bold">$6.25</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Cold brew with rose water and gold flakes.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Hojicha Roasted Tea</span>
+                            <span class="text-accent-gold font-bold">$5.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Earthy, smoky Japanese roasted green tea.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Iced Pistachio Cream</span>
+                            <span class="text-accent-gold font-bold">$6.95</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Cold brew topped with nutty pistachio foam.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Charcoal Mocha</span>
+                            <span class="text-accent-gold font-bold">$6.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Activated charcoal with dark cocoa blend.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8 fade-in">
+                    <h3 class="font-serif text-2xl text-coffee-800 italic border-l-4 border-accent-gold pl-4">Pastry Gallery</h3>
+                    
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Almond Croissant</span>
+                            <span class="text-accent-gold font-bold">$4.75</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Twice-baked with frangipane and slivered almonds.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Yuzu Lemon Tart</span>
+                            <span class="text-accent-gold font-bold">$5.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Buttery shortcrust with sharp citrus curd.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Cardamom Bun</span>
+                            <span class="text-accent-gold font-bold">$4.25</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Swedish style twisted dough with spiced sugar.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Pain au Chocolat</span>
+                            <span class="text-accent-gold font-bold">$4.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Flaky layers with dual chocolate batons.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Pistachio Financier</span>
+                            <span class="text-accent-gold font-bold">$3.95</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Small French almond cake with crushed nuts.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Sea Salt Brownie</span>
+                            <span class="text-accent-gold font-bold">$4.25</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">70% dark cocoa with Maldon salt flakes.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-8 fade-in">
+                    <h3 class="font-serif text-2xl text-coffee-800 italic border-l-4 border-accent-gold pl-4">Small Plates</h3>
+                    
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Avocado Sourdough</span>
+                            <span class="text-accent-gold font-bold">$12.00</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Poached egg, chili flakes, and radish.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Smoked Salmon Bagel</span>
+                            <span class="text-accent-gold font-bold">$14.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Capers, dill cream cheese, and red onion.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Acai Glass Bowl</span>
+                            <span class="text-accent-gold font-bold">$11.00</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Organic acai with seasonal berries and hemp.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Truffle Grilled Cheese</span>
+                            <span class="text-accent-gold font-bold">$13.25</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Sourdough, aged cheddar, and truffle oil.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Granola Parfait</span>
+                            <span class="text-accent-gold font-bold">$9.50</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Greek yogurt, manuka honey, and berries.</p>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <div class="flex justify-between items-end menu-item-border pb-1">
+                            <span class="font-bold">Burrata & Heirloom</span>
+                            <span class="text-accent-gold font-bold">$15.00</span>
+                        </div>
+                        <p class="text-xs text-coffee-600/70">Fresh burrata with balsamic and basil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="gallery" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-accent-gold font-bold tracking-widest text-[10px] uppercase mb-2 block">Gallery</span>
+                <h2 class="font-serif text-4xl">The Experience</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-3xl h-80 fade-in">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Interior">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <p class="text-white font-serif text-lg">Modern Interior</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl h-80 fade-in">
+                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Latte Art">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <p class="text-white font-serif text-lg">Artisan Latte Art</p>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden rounded-3xl h-80 fade-in">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Craftsmanship">
+                    <div class="absolute inset-0 bg-gradient-to-t from-coffee-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                        <p class="text-white font-serif text-lg">Expert Craftsmanship</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-24 bg-coffee-100/20">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-serif text-4xl mb-4">Guest Reviews</h2>
+                <p class="text-[10px] uppercase tracking-widest font-bold text-accent-gold">What they're saying</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl fade-in">
+                    <div class="flex gap-1 text-accent-gold mb-4 text-sm"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <p class="text-sm italic leading-relaxed text-coffee-800/80 mb-6">"The glass architecture creates an atmosphere of pure serenity. My favorite spot for morning coding."</p>
+                    <p class="font-bold text-xs uppercase tracking-widest">— Alex Rivera</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl fade-in">
+                    <div class="flex gap-1 text-accent-gold mb-4 text-sm"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <p class="text-sm italic leading-relaxed text-coffee-800/80 mb-6">"Unmatched latte art and a staff that truly understands specialty coffee. A hidden gem."</p>
+                    <p class="font-bold text-xs uppercase tracking-widest">— Sophia Chen</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl fade-in">
+                    <div class="flex gap-1 text-accent-gold mb-4 text-sm"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                    <p class="text-sm italic leading-relaxed text-coffee-800/80 mb-6">"I love the minimalist aesthetic. It feels very premium without being pretentious."</p>
+                    <p class="font-bold text-xs uppercase tracking-widest">— Liam Foster</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="findus" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="glass-card rounded-[40px] overflow-hidden flex flex-col lg:flex-row">
+                <div class="lg:w-1/3 p-12 flex flex-col justify-center">
+                    <h2 class="font-serif text-4xl mb-6">Visit Us</h2>
+                    <div class="space-y-6 text-sm">
+                        <p><strong class="block text-accent-gold uppercase tracking-widest text-[10px]">Location</strong> 123 Glass Boulevard, Design District</p>
+                        <p><strong class="block text-accent-gold uppercase tracking-widest text-[10px]">Open</strong> Mon-Sun: 7am — 9pm</p>
+                    </div>
+                </div>
+                <div class="lg:w-2/3 h-64 lg:h-96 bg-coffee-100 relative grayscale">
+                    <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover opacity-40">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="glass-card px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest">Interactive Map</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-coffee-100 text-center">
+        <p class="text-[10px] font-bold uppercase tracking-[0.5em] text-coffee-900/40">Prason - Cafe Project &copy; 2026</p>
+    </footer>
+
+    <section id="build-yours" class="py-24 bg-accent-gold/5 border-y border-accent-gold/10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <span class="text-accent-gold font-bold tracking-[0.3em] uppercase text-[10px] mb-4 block">Professional Web Design</span>
+                <h2 class="font-serif text-4xl md:text-5xl mb-6">Want a premium website <br/><span class="italic font-light text-coffee-600">for your cafe?</span></h2>
+                <p class="text-coffee-800/70 mb-10 leading-relaxed max-w-2xl mx-auto">
+                    I build high-end digital experiences for food and beverage brands. Stand out from the competition with a website that reflects your quality.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://wa.me/919849257600?text=Hi%20Prason!%20I%20saw%20your%20Cafe%20Website%20demo%20and%20I'm%20interested%20in%20building%20a%20premium%20website%20for%20my%20business.%20Can%20we%20discuss%20the%20details?"class="bg-coffee-900 text-white px-8 py-4 rounded-full font-bold hover:bg-accent-gold transition-all flex items-center justify-center gap-2">
+                        <i class="ri-whatsapp-line text-lg"></i> Hire Me for Your Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+        const menuIcon = document.getElementById('menu-icon');
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            menuIcon.className = mobileNav.classList.contains('active') ? 'ri-close-line text-2xl' : 'ri-menu-4-line text-2xl';
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'py-4', 'shadow-sm');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'py-4', 'shadow-sm');
+                nav.classList.add('py-6');
+            }
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+    <footer class="bg-coffee-900 text-white/90 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="#" class="font-serif text-2xl font-bold block mb-6">COFFEE <span class="text-accent-gold">LATTE</span></a>
+                    <p class="text-sm text-white/60 leading-relaxed italic">
+                        "The morning glow in every cup."
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-accent-gold font-bold uppercase tracking-widest text-[10px] mb-6">Quick Links</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="#home" class="hover:text-accent-gold transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-accent-gold transition-colors">Our Story</a></li>
+                        <li><a href="#menu" class="hover:text-accent-gold transition-colors">Menu</a></li>
+                        <li><a href="#findus" class="hover:text-accent-gold transition-colors">Visit Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-accent-gold font-bold uppercase tracking-widest text-[10px] mb-6">Support</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-accent-gold transition-colors">Shipping Info</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-accent-gold font-bold uppercase tracking-widest text-[10px] mb-6">Connect With Us</h4>
+                    <div class="flex space-x-5 text-xl">
+                        <a href="#" class="hover:text-accent-gold transition-all hover:-translate-y-1" aria-label="Facebook">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent-gold transition-all hover:-translate-y-1" aria-label="Twitter">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent-gold transition-all hover:-translate-y-1" aria-label="Instagram">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent-gold transition-all hover:-translate-y-1" aria-label="LinkedIn">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                    </div>
+                    <p class="mt-6 text-xs text-white/40">Follow us for daily brewing tips and new arrivals.</p>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 text-center">
+                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30 mb-2">&copy; 2026 COFFEE LATTE ARTISANS.</p>
+                <p class="text-[10px] uppercase tracking-widest text-white/60">
+                    Designed & Developed by <a href="#" class="text-accent-gold hover:underline">Prason Paul</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
